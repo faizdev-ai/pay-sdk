@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <style>
+      body {
+        background: #fafafa;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <script type="module">
+      import { html, render } from "lit";
+      import "../dist/src/pay-button/index.js";
+      const header = "Pay Now";
+      // https://paymentgatway-sdk.chainbull.net/payment/652502d7-902b-4e42-be69-778a81a060e6
+      render(
+        html` <pay-button
+          .paymentToken=${"652502d7-902b-4e42-be69-778a81a060e6"}
+          .btnTxt=${header}
+          .amount=${3}
+        >
+          some light-dom
+        </pay-button>`,
+        document.querySelector("#demo"),
+      );
+    </script>
+  </body>
+</html>
