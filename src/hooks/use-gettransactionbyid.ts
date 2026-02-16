@@ -1,10 +1,7 @@
 import { ReactiveController, ReactiveControllerHost } from "lit";
 import { UseApi } from "./use-api.js";
 
-interface TransactionResponse {
-  tx_status?: string;
-}
-
+type TransactionResponse = any;
 export class UseGetTransactionById implements ReactiveController {
   private host: ReactiveControllerHost;
   private intervalId?: number;
@@ -70,7 +67,9 @@ export class UseGetTransactionById implements ReactiveController {
     this.stopPolling();
     this.loadingState = true;
     this.intervalId = window.setInterval(() => {
-      if (this.api.data?.tx_status === "paid") {
+      // console.log(this.api, "asdadsa");
+
+      if (this.api.data?.tx_status == "paid") {
         this.loadingState = false;
         this.stopPolling();
         return;

@@ -45,7 +45,8 @@ export class UseGetTransactionById {
         this.stopPolling();
         this.loadingState = true;
         this.intervalId = window.setInterval(() => {
-            if (this.api.data?.tx_status === "paid") {
+            // console.log(this.api, "asdadsa");
+            if (this.api.data?.tx_status == "paid") {
                 this.loadingState = false;
                 this.stopPolling();
                 return;

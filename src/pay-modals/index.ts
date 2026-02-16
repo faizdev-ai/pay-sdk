@@ -248,9 +248,9 @@ export class CryptoPay extends LitElement {
 
   private renderStep2() {
     this.qrWalletAddress = this.qrInfo?.data?.data?.payQr?.qr_address;
-
-    console.log(this.transaction?.loading, "transaction>>");
-
+    if (this.transaction?.data?.data?.tx_status == "paid") {
+      this.step = 3;
+    }
     if (this.qrInfo.loading) {
       return html`
         <div
@@ -402,13 +402,15 @@ export class CryptoPay extends LitElement {
               ? this.renderStep3()
               : this.renderStep4()}
         <close-button @click=${this.close}></close-button>
-        <div class="timeRemainContainer">
-          <p>Time Left:</p>
-          <p>
-            ${this.expire.hours}h : ${this.expire.minutes}m :
-            ${this.expire.seconds}s
-          </p>
-        </div>
+        ${this.step < 3
+          ? html`<div class="timeRemainContainer">
+              <p>Time Left:</p>
+              <p>
+                ${this.expire.hours}h : ${this.expire.minutes}m :
+                ${this.expire.seconds}s
+              </p>
+            </div>`
+          : html``}
       </dialog>
     `;
   }
