@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../src/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,aAAa,CAAC;AACrC,OAAO,EAAE,SAAS,EAAE,MAAM,uBAAuB,CAAC","sourcesContent":["export { PaySdk } from \"./PaySdk.js\";\nexport { PayButton } from \"./pay-button/index.js\";\n"]}
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../src/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,uBAAuB,CAAC","sourcesContent":["export { PayButton } from \"./pay-button/index.js\";\n"]}
