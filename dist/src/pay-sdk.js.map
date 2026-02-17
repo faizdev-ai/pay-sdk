@@ -1,1 +1,0 @@
-{"version":3,"file":"pay-sdk.js","sourceRoot":"","sources":["../../src/pay-sdk.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,aAAa,CAAC;AAErC,MAAM,CAAC,cAAc,CAAC,MAAM,CAAC,SAAS,EAAE,MAAM,CAAC,CAAC","sourcesContent":["import { PaySdk } from './PaySdk.js';\n\nwindow.customElements.define('pay-sdk', PaySdk);\n"]}
