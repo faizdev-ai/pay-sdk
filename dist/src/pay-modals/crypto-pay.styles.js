@@ -70,7 +70,7 @@ export const cryptoPayStyles = css `
     align-items: center;
     margin-top: 8px;
     padding-bottom: 8px;
-    color: #fff;
+    color: #111;
   }
 
   .amount-input {
@@ -185,7 +185,7 @@ export const cryptoPayStyles = css `
   .payment-container {
     padding: 40px 30px;
     text-align: center;
-    background-color: #111;
+    background-color: #fff;
   }
 
   .payment-title {
