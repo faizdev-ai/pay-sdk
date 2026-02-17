@@ -1,8 +1,11 @@
 import { css } from "lit";
 export const cryptoPayStyles = css `
-  /* =========================
-     Dialog
-  ========================== */
+  :host {
+    all: initial;
+    display: inline-block;
+    font-family: sans-serif;
+  }
+
   .error-text {
     color: red;
     font-size: 1.5em;
@@ -185,7 +188,7 @@ export const cryptoPayStyles = css `
   .payment-container {
     padding: 40px 30px;
     text-align: center;
-    background-color: #fff;
+    background-color: #fff !important;
   }
 
   .payment-title {
@@ -376,7 +379,7 @@ export const cryptoPayStyles = css `
     .payment-container {
       /* height: 80px; */
       overflow: auto;
-      background-color: #fff;
+      background-color: #fff !important;
     }
     dialog {
       width: 100%;
