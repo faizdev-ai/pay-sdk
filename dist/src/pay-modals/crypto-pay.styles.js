@@ -71,6 +71,11 @@ export const cryptoPayStyles = css `
     margin-top: 8px;
     padding-bottom: 8px;
   }
+  @media (prefers-color-scheme: dark) {
+    amount-row {
+      color: #000;
+    }
+  }
 
   .amount-input {
     font-size: 36px;
