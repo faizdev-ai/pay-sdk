@@ -190,6 +190,7 @@ export const cryptoPayStyles = css `
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 24px;
+    color: #111;
   }
 
   .amount-card {
@@ -373,6 +374,7 @@ export const cryptoPayStyles = css `
     .payment-container {
       /* height: 80px; */
       overflow: auto;
+      background-color: #fff;
     }
     dialog {
       width: 100%;
