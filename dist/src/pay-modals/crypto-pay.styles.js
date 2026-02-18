@@ -30,6 +30,7 @@ export const cryptoPayStyles = css `
     overflow: hidden;
     font-family: system-ui, sans-serif;
     position: relative;
+    background-color: #fff !important;
   }
 
   dialog::backdrop {
@@ -387,6 +388,7 @@ export const cryptoPayStyles = css `
       height: 100vh;
       border-radius: 0;
       overflow: auto;
+      background-color: #fff !important;
     }
 
     .step1 {
