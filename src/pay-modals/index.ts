@@ -8,6 +8,8 @@ import "../components/close-button.js";
 import { UseExpire } from "../hooks/use-expire.js";
 import { UseGetTransactionById } from "../hooks/use-gettransactionbyid.js";
 import "../components/wifi-loader.js";
+import { shortenAddress } from "../utils/shortenAddress.js";
+import { copyToClipBoard } from "../utils/copyToClipBoard.js";
 const TIMER = 10;
 
 @customElement("crypto-pay")
@@ -179,7 +181,7 @@ export class CryptoPay extends LitElement {
               @input=${this.handleAmountChange}
               min="0"
             />
-            <div class="currency">USD</div>
+            <div class="currency currencyStep1">USD</div>
           </div>
 
           <div class="crypto-list">
@@ -285,54 +287,101 @@ export class CryptoPay extends LitElement {
         </div>
       `;
     }
-
+    console.log(this.transaction, this.selectedCrypto, "asdadad");
     return html`
-      <div class="payment-sdk-container">
-        <h2 class="payment-title">
-          Pay with ${this.selectedCrypto?.token?.symbol}
-        </h2>
-
-        <div class="amount-card">
-          <div class="amount-row">
-            <span>You Pay</span>
-            <strong>${this.amount} USD</strong>
-          </div>
-
-          <div class="amount-divider">↓ Conversion ↓</div>
-
-          <div class="amount-row crypto">
-            <span>Send</span>
-            <strong>
-              ${this.exchange.loading
-                ? "Calculating..."
-                : `${this.equivalentCrypto} ${this.selectedCrypto?.token?.symbol}`}
-            </strong>
+      <div class="steptwoContainer">
+        <p class="step2HeaderTitle">
+          ${this.exchange.loading
+            ? "Calculating..."
+            : `${this.equivalentCrypto} ${this.selectedCrypto?.token?.symbol}`}
+        </p>
+        <p class="step2HeaderSubTitle">${this.amount} USD</p>
+        <p class="step2HeaderSubTitle">
+          Network .${this.selectedCrypto?.token?.chain?.name}
+        </p>
+        <div class="conditionContainer">
+          <p class="step2HeaderSubTitle text-muted">You Pay network fees</p>
+          <p class="step2HeaderSubTitle">Info</p>
+        </div>
+        <div class="step2TrxnContainer">
+          <img
+            src=${this.qrInfo?.data?.data?.paymentQr}
+            class="step2-qr-image"
+          />
+          <div class="step2TrxnContainer-right-box">
+            <p class="text-muted step2TrxnContainer-right-box-title">
+              Recipient's wallet address
+            </p>
+            <p class="step2TrxnContainer-right-box-subtitle">
+              Recipient's wallet address
+            </p>
+            <p class="text-muted step2TrxnContainer-right-box-tirtiarytitle">
+              When your payment status will change, we'll send to you
+              notification.
+            </p>
           </div>
         </div>
-
-        <div class="qr-container">
-          <img src=${this.qrInfo?.data?.data?.paymentQr} class="qr-image" />
+        <div class="step2TrxnContainer step2TrxnContainerContractAddress">
+          <p>Contract Address:</p>
+          <p
+            class="contractAddress"
+            @click=${() => {
+              copyToClipBoard(this.qrInfo?.data?.data?.payQr?.qr_address);
+            }}
+          >
+            ${shortenAddress(this.qrInfo?.data?.data?.payQr?.qr_address)}
+          </p>
         </div>
-
-        <div class="wallet-box">
-          <div>
-            <div class="wallet-label">Wallet Address</div>
-            <div class="wallet-address">
-              ${this.qrInfo?.data?.data?.payQr?.qr_address}
-            </div>
-          </div>
-          <div>
-            ${this.transaction?.loading &&
-            html`<wifi-loader .text=${""}></wifi-loader>`}
-          </div>
-        </div>
-
-        <!-- <div class="actions">
-          <button class="secondary" @click=${this.markFailed}>Reject</button>
-          <button class="primary" @click=${this.markSuccess}>I've Paid</button>
-        </div> -->
       </div>
     `;
+
+    // return html`
+    //   <div class="payment-sdk-container">
+    //     <h2 class="payment-title">
+    //       Pay with ${this.selectedCrypto?.token?.symbol}
+    //     </h2>
+
+    //     <div class="amount-card">
+    //       <div class="amount-row">
+    //         <span>You Pay</span>
+    //         <strong>${this.amount} USD</strong>
+    //       </div>
+
+    //       <div class="amount-divider">↓ Conversion ↓</div>
+
+    //       <div class="amount-row crypto">
+    //         <span>Send</span>
+    //         <strong>
+    //           ${this.exchange.loading
+    //             ? "Calculating..."
+    //             : `${this.equivalentCrypto} ${this.selectedCrypto?.token?.symbol}`}
+    //         </strong>
+    //       </div>
+    //     </div>
+
+    //     <div class="qr-container">
+    //       <img src=${this.qrInfo?.data?.data?.paymentQr} class="qr-image" />
+    //     </div>
+
+    //     <div class="wallet-box">
+    //       <div>
+    //         <div class="wallet-label">Wallet Address</div>
+    //         <div class="wallet-address">
+    //           ${this.qrInfo?.data?.data?.payQr?.qr_address}
+    //         </div>
+    //       </div>
+    //       <div>
+    //         ${this.transaction?.loading &&
+    //         html`<wifi-loader .text=${""}></wifi-loader>`}
+    //       </div>
+    //     </div>
+
+    //     <!-- <div class="actions">
+    //       <button class="secondary" @click=${this.markFailed}>Reject</button>
+    //       <button class="primary" @click=${this.markSuccess}>I've Paid</button>
+    //     </div> -->
+    //   </div>
+    // `;
   }
   private renderStep3() {
     return html`
@@ -403,23 +452,29 @@ export class CryptoPay extends LitElement {
   render() {
     return html`
       <dialog @cancel=${this.close}>
-        ${this.step === 1
-          ? this.renderStep1()
-          : this.step === 2
-            ? this.renderStep2()
-            : this.step === 3
-              ? this.renderStep3()
-              : this.renderStep4()}
-        <close-button @click=${this.close}></close-button>
-        ${this.step < 3
-          ? html`<div class="timeRemainContainer">
-              <p>Time Left:</p>
-              <p>
-                ${this.expire.hours}h : ${this.expire.minutes}m :
-                ${this.expire.seconds}s
-              </p>
-            </div>`
-          : html``}
+        <div class="main-payment-sdk-container">
+          <div class="main-payment-form-container">
+            ${this.step === 1
+              ? this.renderStep1()
+              : this.step === 2
+                ? this.renderStep2()
+                : this.step === 3
+                  ? this.renderStep3()
+                  : this.renderStep4()}
+            <close-button @click=${this.close}></close-button>
+          </div>
+          <div class="main-payment-timer-container">
+            ${this.step < 3
+              ? html`<div class="timeRemainContainer">
+                  <p>Expiration Time:</p>
+                  <p>
+                    ${this.expire.hours}h : ${this.expire.minutes}m :
+                    ${this.expire.seconds}s
+                  </p>
+                </div>`
+              : html``}
+          </div>
+        </div>
       </dialog>
     `;
   }

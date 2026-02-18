@@ -12,15 +12,6 @@ export const cryptoPayStyles = css`
     font-size: 1.5em;
     font-weight: 500;
   }
-  .timeRemainContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /* width: 100%; */
-    background: linear-gradient(135deg, #4f7cff, #3b6df0);
-    padding: 0px 20px;
-    color: #fff;
-  }
 
   dialog {
     border: none;
@@ -32,6 +23,30 @@ export const cryptoPayStyles = css`
     font-family: system-ui, sans-serif;
     position: relative;
     background-color: #ffffff;
+  }
+
+  .main-payment-sdk-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+  }
+  .main-payment-form-container {
+    height: 100%;
+  }
+  .main-payment-timer-container {
+    flex: 1;
+  }
+
+  .timeRemainContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* width: 100%; */
+    background: linear-gradient(135deg, #4f7cff, #3b6df0);
+    padding: 0px 20px;
+    color: #fff;
   }
 
   dialog::backdrop {
@@ -98,6 +113,9 @@ export const cryptoPayStyles = css`
     margin-left: auto;
     font-weight: 600;
     font-size: 18px;
+  }
+  .currencyStep1 {
+    color: #fff;
   }
 
   .crypto-list {
@@ -435,6 +453,180 @@ export const cryptoPayStyles = css`
 
     .payment-title {
       font-size: 20px;
+    }
+  }
+  .steptwoContainer {
+    background-color: #f4f5f7;
+    padding: 24px;
+    margin: 0px 15px;
+    border-radius: 16px;
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+    max-width: 480px;
+    margin: 68px auto;
+  }
+
+  /* ===== Header ===== */
+
+  .step2HeaderTitle {
+    background: linear-gradient(90deg, #111, #444);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .step2HeaderSubTitle {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 6px 0 0 0;
+  }
+
+  .conditionContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .text-muted {
+    color: #7a7a7a;
+    font-weight: 400;
+  }
+
+  /* ===== QR + Wallet Card ===== */
+
+  .step2TrxnContainer {
+    background-color: #ffffff;
+    display: flex;
+    padding: 20px;
+    gap: 16px;
+    margin-top: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+    align-items: center;
+  }
+
+  .step2-qr-image {
+    height: 120px;
+    width: 120px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    padding: 8px;
+    background: #fafafa;
+  }
+
+  .step2TrxnContainer-right-box {
+    flex: 1;
+  }
+
+  .step2TrxnContainer-right-box-title {
+    font-size: 12px;
+    color: #8a8a8a;
+    margin: 0;
+  }
+
+  .step2TrxnContainer-right-box-subtitle {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 6px 0;
+    word-break: break-all;
+  }
+
+  .step2TrxnContainer-right-box-tirtiarytitle {
+    font-size: 12px;
+    color: #6f6f6f;
+    margin: 0;
+    line-height: 1.4;
+  }
+  .contractAddress {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  @media (max-width: 768px) {
+    .steptwoContainer {
+      padding: 20px;
+    }
+
+    .step2HeaderTitle {
+      font-size: 24px;
+    }
+
+    .step2TrxnContainer {
+      padding: 18px;
+    }
+
+    .step2-qr-image {
+      height: 100px;
+      width: 100px;
+    }
+  }
+  .step2TrxnContainerContractAddress {
+    padding: 10px;
+    gap: 4px;
+    line-height: 6px;
+  }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    .steptwoContainer {
+      padding: 16px;
+      border-radius: 0; /* full width feel on mobile */
+    }
+
+    .step2HeaderTitle {
+      font-size: 22px;
+    }
+
+    .step2HeaderSubTitle {
+      font-size: 13px;
+    }
+
+    .conditionContainer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    /* Stack QR and wallet vertically */
+    .step2TrxnContainer {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 18px;
+    }
+
+    .step2-qr-image {
+      height: 160px;
+      width: 160px;
+    }
+
+    .step2TrxnContainer-right-box {
+      width: 100%;
+    }
+
+    .step2TrxnContainer-right-box-subtitle {
+      font-size: 14px;
+      word-break: break-word;
+    }
+
+    .step2TrxnContainer-right-box-tirtiarytitle {
+      font-size: 12px;
+    }
+  }
+
+  /* Very Small Devices */
+  @media (max-width: 360px) {
+    .step2HeaderTitle {
+      font-size: 18px;
+    }
+
+    .step2-qr-image {
+      height: 140px;
+      width: 140px;
     }
   }
 `;
