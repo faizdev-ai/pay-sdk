@@ -287,7 +287,6 @@ export class CryptoPay extends LitElement {
         </div>
       `;
     }
-    console.log(this.transaction, this.selectedCrypto, "asdadad");
     return html`
       <div class="steptwoContainer">
         <p class="step2HeaderTitle">
