@@ -121,9 +121,12 @@ export class CryptoPay extends LitElement {
 
   private markSuccess() {
     this.step = 3;
+
     this.dispatchEvent(
       new CustomEvent("payment-success", {
         detail: {
+          success: true,
+          trxnData: this.transaction?.data?.data,
           crypto: this.selectedCrypto,
           amount: this.amount,
         },
@@ -137,6 +140,12 @@ export class CryptoPay extends LitElement {
     this.step = 4;
     this.dispatchEvent(
       new CustomEvent("payment-failed", {
+        detail: {
+          success: false,
+          trxnData: this.transaction?.data?.data,
+          crypto: this.selectedCrypto,
+          amount: this.amount,
+        },
         bubbles: true,
         composed: true,
       }),
@@ -249,7 +258,7 @@ export class CryptoPay extends LitElement {
   private renderStep2() {
     this.qrWalletAddress = this.qrInfo?.data?.data?.payQr?.qr_address;
     if (this.transaction?.data?.data?.tx_status == "paid") {
-      this.step = 3;
+      this.markSuccess();
     }
     if (this.qrInfo.loading) {
       return html`
