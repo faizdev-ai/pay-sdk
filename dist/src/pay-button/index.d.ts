@@ -11,9 +11,4 @@ export declare class PayButton extends LitElement {
     private handleFailure;
     render(): import("lit-html").TemplateResult<1>;
 }
-declare global {
-    interface HTMLElementTagNameMap {
-        "pay-button": PayButton;
-    }
-}
 //# sourceMappingURL=index.d.ts.map

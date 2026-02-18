@@ -52,9 +52,3 @@ export class PayButton extends LitElement {
     `;
   }
 }
-
-declare global {
-  interface HTMLElementTagNameMap {
-    "pay-button": PayButton;
-  }
-}
