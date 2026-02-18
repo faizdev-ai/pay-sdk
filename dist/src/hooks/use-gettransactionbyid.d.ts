@@ -14,3 +14,4 @@ export declare class UseGetTransactionById implements ReactiveController {
     private stopPolling;
     hostDisconnected(): void;
 }
+//# sourceMappingURL=use-gettransactionbyid.d.ts.map

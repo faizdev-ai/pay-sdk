@@ -7,9 +7,16 @@
   "type": "module",
   "main": "dist/src/index.js",
   "module": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "exports": {
-    ".": "./dist/src/index.js",
-    "./pay-sdk.js": "./dist/src/pay-sdk.js"
+    ".": {
+      "import": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
+    },
+    "./pay-sdk.js": {
+      "import": "./dist/src/pay-sdk.js",
+      "types": "./dist/src/pay-sdk.d.ts"
+    }
   },
   "scripts": {
     "analyze": "cem analyze --litelement",

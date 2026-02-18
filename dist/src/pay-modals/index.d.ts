@@ -32,3 +32,4 @@ export declare class CryptoPay extends LitElement {
     private renderStep4;
     render(): import("lit-html").TemplateResult<1>;
 }
+//# sourceMappingURL=index.d.ts.map

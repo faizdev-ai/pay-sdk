@@ -11,3 +11,4 @@ export declare class PayButton extends LitElement {
     private handleFailure;
     render(): import("lit-html").TemplateResult<1>;
 }
+//# sourceMappingURL=index.d.ts.map

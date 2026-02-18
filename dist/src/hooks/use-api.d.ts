@@ -31,3 +31,4 @@ export declare class UseApi<T> {
     setParams(params?: Record<string, string | number | boolean | undefined>): void;
 }
 export {};
+//# sourceMappingURL=use-api.d.ts.map

@@ -23,3 +23,4 @@ export declare class UseExpire implements ReactiveController {
     private tick;
     hostDisconnected(): void;
 }
+//# sourceMappingURL=use-expire.d.ts.map

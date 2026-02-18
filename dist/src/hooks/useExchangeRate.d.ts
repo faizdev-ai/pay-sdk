@@ -15,3 +15,4 @@ export declare class UseExchangeRate implements ReactiveController {
     fetchRate(): Promise<void>;
     refetch(): void;
 }
+//# sourceMappingURL=useExchangeRate.d.ts.map
