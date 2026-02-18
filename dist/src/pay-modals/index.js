@@ -231,7 +231,7 @@ let CryptoPay = class CryptoPay extends LitElement {
         if (this.qrInfo.loading) {
             return html `
         <div
-          class="payment-container"
+          class="payment-sdk-container"
           style="display:flex;justify-content:center;align-items:center;min-height:420px;flex-direction:column"
         >
           <app-loader></app-loader>
@@ -243,7 +243,7 @@ let CryptoPay = class CryptoPay extends LitElement {
         if (this.qrInfo?.isError) {
             return html `
         <div
-          class="payment-container"
+          class="payment-sdk-container"
           style="display:flex;justify-content:center;align-items:center;min-height:420px;flex-direction:column"
         >
           <p class="error-text">
@@ -253,7 +253,7 @@ let CryptoPay = class CryptoPay extends LitElement {
       `;
         }
         return html `
-      <div class="payment-container">
+      <div class="payment-sdk-container">
         <h2 class="payment-title">
           Pay with ${this.selectedCrypto?.token?.symbol}
         </h2>

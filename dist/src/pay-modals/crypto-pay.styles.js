@@ -186,7 +186,7 @@ export const cryptoPayStyles = css `
      Payment Step (Step 2)
   ========================== */
 
-  .payment-container {
+  .payment-sdk-container {
     padding: 40px 30px;
     text-align: center;
     background-color: #ffffff;
@@ -200,7 +200,7 @@ export const cryptoPayStyles = css `
   }
 
   .amount-card {
-    background: #f1f5f9;
+    /* background: #f1f5f9; */
     padding: 20px;
     border-radius: 16px;
     margin-bottom: 24px;
@@ -377,7 +377,7 @@ export const cryptoPayStyles = css `
   ========================== */
 
   @media (max-width: 768px) {
-    .payment-container {
+    .payment-sdk-container {
       /* height: 80px; */
       overflow: auto;
       background-color: #ffffff;
