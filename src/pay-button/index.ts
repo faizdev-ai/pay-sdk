@@ -22,12 +22,10 @@ export class PayButton extends LitElement {
 
   @property({ type: String }) btnTxt = "Pay Now";
   @property({ type: Number }) amount = 0;
-
-  // ✅ Correct way to get child reference
-  @query("crypto-pay")
-  private cryptoPay!: any;
   @property({ type: String })
   paymentToken = "";
+  @query("crypto-pay")
+  private cryptoPay!: any;
 
   private openDialog() {
     // console.log(this.cryptoPay, "asdasdad");
@@ -52,5 +50,11 @@ export class PayButton extends LitElement {
         .amount=${this.amount}
       ></crypto-pay>
     `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "pay-button": PayButton;
   }
 }

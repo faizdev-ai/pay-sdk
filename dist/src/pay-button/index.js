@@ -54,11 +54,11 @@ __decorate([
     property({ type: Number })
 ], PayButton.prototype, "amount", void 0);
 __decorate([
-    query("crypto-pay")
-], PayButton.prototype, "cryptoPay", void 0);
-__decorate([
     property({ type: String })
 ], PayButton.prototype, "paymentToken", void 0);
+__decorate([
+    query("crypto-pay")
+], PayButton.prototype, "cryptoPay", void 0);
 PayButton = __decorate([
     customElement("pay-button")
 ], PayButton);
