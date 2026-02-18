@@ -1,11 +1,11 @@
-import type { PayButton } from "./pay-button/index.ts";
-
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      "pay-button": Partial<PayButton> & {
-        ref?: React.Ref<HTMLElement>;
-      };
+      "pay-button": {
+        btnTxt?: string;
+        amount?: number;
+        paymentToken?: string;
+      } & Partial<HTMLElement>;
     }
   }
 }
