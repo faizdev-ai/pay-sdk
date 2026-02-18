@@ -274,7 +274,7 @@ export class CryptoPay extends LitElement {
           style="display:flex;justify-content:center;align-items:center;min-height:420px;flex-direction:column"
         >
           <app-loader></app-loader>
-          <p>Getting Qr Data...</p>
+          <p>Generating Wallets...</p>
         </div>
       `;
     }
