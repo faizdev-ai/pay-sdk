@@ -301,7 +301,7 @@ let CryptoPay = class CryptoPay extends LitElement {
           </div>
         </div>
         <div class="step2TrxnContainer step2TrxnContainerContractAddress">
-          <p>Contract Address:</p>
+          <p>Recipient's wallet address:</p>
           <p
             class="contractAddress"
             @click=${() => {
