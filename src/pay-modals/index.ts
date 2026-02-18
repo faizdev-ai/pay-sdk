@@ -108,6 +108,11 @@ export class CryptoPay extends LitElement {
   }
 
   close() {
+    this.step = 1;
+    this.qrInfo = {};
+    this.qrWalletAddress = "";
+    this.selectedCrypto = {};
+    this.transaction = new UseGetTransactionById(this);
     this.dialog.close();
     this.isDialogOpen = false;
   }
