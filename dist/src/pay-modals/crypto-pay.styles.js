@@ -471,7 +471,7 @@ export const cryptoPayStyles = css `
 
   .step2HeaderTitle {
     background: linear-gradient(90deg, #111, #444);
-    -webkit-background-clip: text;
+    /* -webkit-background-clip: text; */
     -webkit-text-fill-color: transparent;
     font-size: 28px;
     font-weight: 700;
