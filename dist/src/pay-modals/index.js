@@ -11,6 +11,7 @@ import { UseGetTransactionById } from "../hooks/use-gettransactionbyid.js";
 import "../components/wifi-loader.js";
 import { shortenAddress } from "../utils/shortenAddress.js";
 import { copyToClipBoard } from "../utils/copyToClipBoard.js";
+import { keyed } from "lit/directives/keyed.js";
 const TIMER = 10;
 let CryptoPay = class CryptoPay extends LitElement {
     constructor() {
@@ -383,18 +384,23 @@ let CryptoPay = class CryptoPay extends LitElement {
     `;
     }
     render() {
+        // console.log(this, "keyed>>>");
         return html `
       <dialog @cancel=${this.close}>
         <app-toaster></app-toaster>
         <div class="main-payment-sdk-container">
           <div class="main-payment-form-container">
-            ${this.step === 1
+            ${keyed(this.step, html `
+                <div class="step-transition">
+                  ${this.step === 1
             ? this.renderStep1()
             : this.step === 2
                 ? this.renderStep2()
                 : this.step === 3
                     ? this.renderStep3()
                     : this.renderStep4()}
+                </div>
+              `)}
             <close-button @click=${this.close}></close-button>
           </div>
           <div class="main-payment-timer-container">

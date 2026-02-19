@@ -628,5 +628,19 @@ export const cryptoPayStyles = css `
       width: 140px;
     }
   }
+  .step-transition {
+    animation: stepEnter 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @keyframes stepEnter {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 `;
 //# sourceMappingURL=crypto-pay.styles.js.map

@@ -33,7 +33,7 @@ export class PayButton extends LitElement {
     this.dialogEnabled = true;
     setTimeout(() => {
       this.cryptoPay?.open();
-    }, 1000);
+    }, 500);
   }
 
   private handleSuccess(e: CustomEvent) {

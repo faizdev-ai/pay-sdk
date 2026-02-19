@@ -15,7 +15,7 @@ let PayButton = class PayButton extends LitElement {
         this.dialogEnabled = true;
         setTimeout(() => {
             this.cryptoPay?.open();
-        }, 1000);
+        }, 500);
     }
     handleSuccess(e) {
         this.dialogEnabled = false;
