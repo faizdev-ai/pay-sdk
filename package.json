@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "@lit/task": "^1.0.3",
-    "lit": "^3.1.4"
+    "lit": "^3.1.4",
+    "lit-toaster": "^0.2.6"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.3",

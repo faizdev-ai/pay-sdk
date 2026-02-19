@@ -10,6 +10,7 @@ import { UseGetTransactionById } from "../hooks/use-gettransactionbyid.js";
 import "../components/wifi-loader.js";
 import { shortenAddress } from "../utils/shortenAddress.js";
 import { copyToClipBoard } from "../utils/copyToClipBoard.js";
+import { toast } from "lit-toaster";
 const TIMER = 10;
 
 @customElement("crypto-pay")
@@ -414,6 +415,7 @@ export class CryptoPay extends LitElement {
   render() {
     return html`
       <dialog @cancel=${this.close}>
+        <app-toaster></app-toaster>
         <div class="main-payment-sdk-container">
           <div class="main-payment-form-container">
             ${this.step === 1

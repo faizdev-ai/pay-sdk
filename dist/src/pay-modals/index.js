@@ -385,6 +385,7 @@ let CryptoPay = class CryptoPay extends LitElement {
     render() {
         return html `
       <dialog @cancel=${this.close}>
+        <app-toaster></app-toaster>
         <div class="main-payment-sdk-container">
           <div class="main-payment-form-container">
             ${this.step === 1
