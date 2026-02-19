@@ -1,8 +1,14 @@
 import { html, css, LitElement } from "lit";
 import { customElement, property, query, state } from "lit/decorators.js";
 import "../pay-modals/index.js";
+
+export interface PayButtonProps {
+  btnTxt?: String;
+  amount: number;
+  paymentToken: String;
+}
 @customElement("pay-button")
-export class PayButton extends LitElement {
+export class PayButton extends LitElement implements PayButtonProps {
   static styles = css`
     :host {
       display: inline-block;
@@ -64,5 +70,11 @@ export class PayButton extends LitElement {
           ></crypto-pay>`
         : html``}
     `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "pay-button": PayButton;
   }
 }

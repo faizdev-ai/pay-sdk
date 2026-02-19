@@ -1,6 +1,11 @@
 import { LitElement } from "lit";
 import "../pay-modals/index.js";
-export declare class PayButton extends LitElement {
+export interface PayButtonProps {
+    btnTxt?: String;
+    amount: number;
+    paymentToken: String;
+}
+export declare class PayButton extends LitElement implements PayButtonProps {
     static styles: import("lit").CSSResult;
     btnTxt: string;
     amount: number;
@@ -12,5 +17,10 @@ export declare class PayButton extends LitElement {
     private handleFailure;
     private handleClose;
     render(): import("lit-html").TemplateResult<1>;
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        "pay-button": PayButton;
+    }
 }
 //# sourceMappingURL=index.d.ts.map
