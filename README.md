@@ -1,7 +1,3 @@
-Here is your complete **README.md** file — clean, professional, and ready to publish 🚀
-
----
-
 # 💳 Pay SDK
 
 A lightweight, framework-agnostic **Crypto Payment SDK** built with **Lit** and Web Components.
