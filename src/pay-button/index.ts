@@ -72,9 +72,3 @@ export class PayButton extends LitElement implements PayButtonProps {
     `;
   }
 }
-
-declare global {
-  interface HTMLElementTagNameMap {
-    "pay-button": PayButton;
-  }
-}

@@ -18,9 +18,4 @@ export declare class PayButton extends LitElement implements PayButtonProps {
     private handleClose;
     render(): import("lit-html").TemplateResult<1>;
 }
-declare global {
-    interface HTMLElementTagNameMap {
-        "pay-button": PayButton;
-    }
-}
 //# sourceMappingURL=index.d.ts.map
