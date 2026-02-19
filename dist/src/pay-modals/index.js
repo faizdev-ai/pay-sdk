@@ -317,47 +317,6 @@ let CryptoPay = class CryptoPay extends LitElement {
         </div>
       </div>
     `;
-        // return html`
-        //   <div class="payment-sdk-container">
-        //     <h2 class="payment-title">
-        //       Pay with ${this.selectedCrypto?.token?.symbol}
-        //     </h2>
-        //     <div class="amount-card">
-        //       <div class="amount-row">
-        //         <span>You Pay</span>
-        //         <strong>${this.amount} USD</strong>
-        //       </div>
-        //       <div class="amount-divider">↓ Conversion ↓</div>
-        //       <div class="amount-row crypto">
-        //         <span>Send</span>
-        //         <strong>
-        //           ${this.exchange.loading
-        //             ? "Calculating..."
-        //             : `${this.equivalentCrypto} ${this.selectedCrypto?.token?.symbol}`}
-        //         </strong>
-        //       </div>
-        //     </div>
-        //     <div class="qr-container">
-        //       <img src=${this.qrInfo?.data?.data?.paymentQr} class="qr-image" />
-        //     </div>
-        //     <div class="wallet-box">
-        //       <div>
-        //         <div class="wallet-label">Wallet Address</div>
-        //         <div class="wallet-address">
-        //           ${this.qrInfo?.data?.data?.payQr?.qr_address}
-        //         </div>
-        //       </div>
-        //       <div>
-        //         ${this.transaction?.loading &&
-        //         html`<wifi-loader .text=${""}></wifi-loader>`}
-        //       </div>
-        //     </div>
-        //     <!-- <div class="actions">
-        //       <button class="secondary" @click=${this.markFailed}>Reject</button>
-        //       <button class="primary" @click=${this.markSuccess}>I've Paid</button>
-        //     </div> -->
-        //   </div>
-        // `;
     }
     renderStep3() {
         return html `
