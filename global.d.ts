@@ -1,11 +1,12 @@
-import { PayButton } from "./src/index.ts";
-
 declare global {
   namespace JSX {
+    interface PayButtonProps {
+      btnTxt?: String;
+      amount: number;
+      paymentToken: String;
+    }
     interface IntrinsicElements {
-      "pay-button": PayButton;
+      "pay-button": PayButtonProps;
     }
   }
 }
-
-export {};
