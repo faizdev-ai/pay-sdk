@@ -115,6 +115,12 @@ export class CryptoPay extends LitElement {
     this.transaction = new UseGetTransactionById(this);
     this.dialog.close();
     this.isDialogOpen = false;
+    this.dispatchEvent(
+      new CustomEvent("onClose", {
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   /* ======================

@@ -6,9 +6,11 @@ export declare class PayButton extends LitElement {
     amount: number;
     paymentToken: string;
     private cryptoPay;
+    dialogEnabled: boolean;
     private openDialog;
     private handleSuccess;
     private handleFailure;
+    private handleClose;
     render(): import("lit-html").TemplateResult<1>;
 }
 //# sourceMappingURL=index.d.ts.map

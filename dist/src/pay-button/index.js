@@ -1,6 +1,6 @@
 import { __decorate } from "tslib";
 import { html, css, LitElement } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { customElement, property, query, state } from "lit/decorators.js";
 import "../pay-modals/index.js";
 let PayButton = class PayButton extends LitElement {
     constructor() {
@@ -8,26 +8,39 @@ let PayButton = class PayButton extends LitElement {
         this.btnTxt = "Pay Now";
         this.amount = 0;
         this.paymentToken = "";
+        this.dialogEnabled = false;
     }
     openDialog() {
         // console.log(this.cryptoPay, "asdasdad");
-        this.cryptoPay?.open();
+        this.dialogEnabled = true;
+        setTimeout(() => {
+            this.cryptoPay?.open();
+        }, 1000);
     }
     handleSuccess(e) {
+        this.dialogEnabled = false;
         console.log("Payment success:", e.detail);
     }
     handleFailure() {
+        this.dialogEnabled = false;
         console.log("Payment failed");
+    }
+    handleClose() {
+        console.log("handled>>");
+        this.dialogEnabled = false;
     }
     render() {
         return html `
       <button part="button" @click=${this.openDialog}>${this.btnTxt}</button>
-      <crypto-pay
-        @payment-success=${this.handleSuccess}
-        @payment-failed=${this.handleFailure}
-        .paymentToken=${this.paymentToken}
-        .amount=${this.amount}
-      ></crypto-pay>
+      ${this.dialogEnabled
+            ? html `<crypto-pay
+            @payment-success=${this.handleSuccess}
+            @payment-failed=${this.handleFailure}
+            @onClose=${this.handleClose}
+            .paymentToken=${this.paymentToken}
+            .amount=${this.amount}
+          ></crypto-pay>`
+            : html ``}
     `;
     }
 };
@@ -59,6 +72,9 @@ __decorate([
 __decorate([
     query("crypto-pay")
 ], PayButton.prototype, "cryptoPay", void 0);
+__decorate([
+    state()
+], PayButton.prototype, "dialogEnabled", void 0);
 PayButton = __decorate([
     customElement("pay-button")
 ], PayButton);

@@ -1,5 +1,5 @@
 import { html, css, LitElement } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { customElement, property, query, state } from "lit/decorators.js";
 import "../pay-modals/index.js";
 @customElement("pay-button")
 export class PayButton extends LitElement {
@@ -26,29 +26,43 @@ export class PayButton extends LitElement {
   paymentToken = "";
   @query("crypto-pay")
   private cryptoPay!: any;
-
+  @state()
+  dialogEnabled = false;
   private openDialog() {
     // console.log(this.cryptoPay, "asdasdad");
-    this.cryptoPay?.open();
+    this.dialogEnabled = true;
+    setTimeout(() => {
+      this.cryptoPay?.open();
+    }, 1000);
   }
 
   private handleSuccess(e: CustomEvent) {
+    this.dialogEnabled = false;
     console.log("Payment success:", e.detail);
   }
 
   private handleFailure() {
+    this.dialogEnabled = false;
     console.log("Payment failed");
+  }
+  private handleClose() {
+    console.log("handled>>");
+
+    this.dialogEnabled = false;
   }
 
   render() {
     return html`
       <button part="button" @click=${this.openDialog}>${this.btnTxt}</button>
-      <crypto-pay
-        @payment-success=${this.handleSuccess}
-        @payment-failed=${this.handleFailure}
-        .paymentToken=${this.paymentToken}
-        .amount=${this.amount}
-      ></crypto-pay>
+      ${this.dialogEnabled
+        ? html`<crypto-pay
+            @payment-success=${this.handleSuccess}
+            @payment-failed=${this.handleFailure}
+            @onClose=${this.handleClose}
+            .paymentToken=${this.paymentToken}
+            .amount=${this.amount}
+          ></crypto-pay>`
+        : html``}
     `;
   }
 }
